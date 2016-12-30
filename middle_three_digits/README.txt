@@ -1,0 +1,5 @@
+Middle Three Digits
+
+# Problem: http://rosettacode.org/wiki/Middle_three_digits
+
+Complete but with error.
