@@ -119,7 +119,7 @@ fun shuffle_deck
           //end of fun [loop_back]
         in
           loop_copy(sizeint, 0);
-          deck = arrszref_make_elt(size, (Empty(),Empty())); //not sure about this..
+          deck = szref_make_elt(size, (Empty(),Empty())); //not sure about this..
           loop_back(sizeint, 0)
         end
       end
