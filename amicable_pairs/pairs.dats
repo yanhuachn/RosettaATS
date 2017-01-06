@@ -10,6 +10,7 @@ val divssum: arrszref(int) = arrszref_make_elt(i2sz(20001), 0)
 (* ****** ****** *)
 
 extern
+fun
 list_get_at{a: type}(lst: list0 a, pos: int): a
 
 (* ****** ****** *)

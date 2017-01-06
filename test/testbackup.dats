@@ -5,61 +5,6 @@
 //
 
 fun
-myfun(): void =
-let
-  val test = if 2>3 then true else false
-in
-  if test then println!("TRUE!") else ()
-end
-
-implement main0 () = 
-(
-  myfun()
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(*
-
-implement main0 () =
-(
-  println!(a, "haha");
-  
-  (
-  let val b = 5
-  in
-    println!("b: ", b)
-  end
-  );
-  
-  if 3>2 then println!("3>2") else println!("3<2");
-)
-where
-{
-  val a = "hello"
-}
-
-*)
-
-
-
-//// test array+list+string
-
-fun
 test(): void = () where
 {
 
@@ -72,8 +17,7 @@ val () = println!("hello test!");
 //Declare an array
 val arr = arrszref($arrpsz{int}(1,2,3))
 
-
-
+(*
 val arr2 = arrszref_make_elt<int>(i2sz(10), 88);
 
 val () = let fun change(): void = 
@@ -85,7 +29,7 @@ in
 end
 
 val () = println!("Array2 ", arr2[5]);
-
+*)
 
   //get at
 val () = println!("Array get at ",arr[1]);
@@ -108,11 +52,11 @@ fun loop_array(array: arrszref int, pos: int): void =
 in
   loop_array(arr, 0)
 end  
- 
+  
   (* ******************* *)
   (* ****** string ***** *)
   (* ******************* *)
-
+  
   //Declare a string
   val str = "really?!";
   val () = println!(str);
@@ -156,13 +100,13 @@ val () = println!("after explode: ",str_array[3]);
   //Construct a list
   val lst = ($list{int}(0,1,2,3,4,5,6,7,8,9))  //need to use -DATS_MEMALLOC_LIBC when compiling?
   val lst = g0ofg1(lst)
-(* 
+  
   val lst2 = list0_cons(1, list0_nil());
   val lst2 = list0_cons(2, lst2);
   val () = println!("hahaha lst2");
   val () = print_list0(lst2);
   val () = println!("");
-*)
+  
   //get length
   val length = list0_length(lst)    //or write a recursive function?
   val () = println!("list length: ", length)
@@ -189,7 +133,6 @@ val () =
   in
     loop(lst)
   end
-
 }
 
 implement main0 () = test()
