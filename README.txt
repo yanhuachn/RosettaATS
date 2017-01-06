@@ -2,7 +2,7 @@ ATS solutions for some Rosetta problems.
 
 ### Problem List ###
 
-ABC problem                             (*)
+ABC problem                             (V)
 Amicable pairs                          (*)
 Binary Search                           (V)
 Best shuffle                            (*)

@@ -5,16 +5,16 @@
 //
 
 fun
-myfun(): void =
-let
-  val test = if 2>3 then true else false
-in
-  if test then println!("TRUE!") else ()
-end
+myfun(str: string): bool =
+(
+  if list0_get_at_exn(string_explode(str),3) = 'e' then true
+  else false
+)
 
 implement main0 () = 
 (
-  myfun()
+  println!(myfun("hsdgsadfsg"));
+  println!(myfun("aaaeaaaaaa"));
 )
 
 
@@ -32,7 +32,7 @@ implement main0 () =
 
 
 
-
+//// test if else
 (*
 
 implement main0 () =
@@ -143,10 +143,7 @@ in
 end
 *)
 
-  //String to array
-  
-val str_array = string_explode("helloworld");
-val () = println!("after explode: ",str_array[3]);
+
   
   
   (* ******************* *)
@@ -173,6 +170,14 @@ val () = println!("after explode: ",str_array[3]);
   
   //print the whole list
 val () = print_list0(lst)          //or write a recursive function?
+  
+  
+  //String to list
+  
+val str_array = string_explode("helloworld");
+val () = println!("after explode: ",str_array[3]);
+  
+  
   
   //traverse a list
 val () =
