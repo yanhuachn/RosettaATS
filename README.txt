@@ -8,7 +8,7 @@ Binary Search                           (V)
 Best shuffle                            (V)
 Calendar                                (V)
 
-Caesar cipher                           (*)
+Caesar cipher                           (V)
 Equilibrium index                       (V)
 Lucas-Lehmer test                       (*)
 Middle Three digits                     (*)

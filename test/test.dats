@@ -5,16 +5,37 @@
 //
 
 fun
-myfun(str: string): bool =
+myfun(a: int): void =
 (
-  if list0_get_at_exn(string_explode(str),3) = 'e' then true
-  else false
+let
+  val num1 = 
+  (
+    case a of
+    | 1 => 1
+    | 2 => 2
+    | _ => 3
+  ):int
+  
+  //val lst = ($list{int}(0,1,2))
+  //val lst = g0ofg1(lst)
+  //val lst = list0_cons(~1, lst)
+ 
+  val str = "hello"
+  val lst = string_explode(str)
+  val lst2 = list0_map<char><char>(lst, lam c => c)
+    
+  val num2 = 3
+in
+(
+  println!(list0_get_at_exn(lst, 0));
+  println!(list0_get_at_exn(lst2, 0));
+)
+end
 )
 
 implement main0 () = 
 (
-  println!(myfun("hsdgsadfsg"));
-  println!(myfun("aaaeaaaaaa"));
+  myfun(2)
 )
 
 
