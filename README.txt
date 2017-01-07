@@ -1,12 +1,12 @@
-ATS solutions for some Rosetta problems.
+ATS solutions for some programming problems from rosettacode.org.
 
 ### Problem List ###
 
 ABC problem                             (V)
 Amicable pairs                          (V)
 Binary Search                           (V)
-Best shuffle                            (*)
-Calendar                                (*)
+Best shuffle                            (V)
+Calendar                                (V)
 
 Caesar cipher                           (*)
 Equilibrium index                       (V)
