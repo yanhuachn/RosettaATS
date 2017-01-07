@@ -1,35 +1,76 @@
 //
 #include "share/atspre_define.hats"
 #include "share/atspre_staload.hats"
+#include "share/HATS/atspre_staload_libats_ML.hats"
 //
+
+(* ****** ****** *)
+
+extern
+fun
+sum_propdivs(num: int): int
+
+(* ****** ****** *)
+
+implement
+sum_propdivs(num) = 
+(
+  let 
+    fun loop_sum(pos: int, res: int):<cloref1> int =
+    (
+      if pos >= num then res
+      else
+      (
+        if num % pos = 0 then loop_sum(pos+1, res+pos)
+        else loop_sum(pos+1, res)
+      )
+    )
+  in
+    loop_sum(1, 0)
+  end
+)
+
+
+(* ****** ****** *)
+
+implement main0 () = 
+(
+  let fun loop(from: int, to: int, upb: int): void =
+  (
+    if from >= upb then println!("Done.")
+    else
+    (
+      if to > upb then loop(from+1, from+2, upb)
+      else
+      (
+        if from = sum_propdivs(to) && sum_propdivs(from) = to then
+        (
+          println!("Pairs: ", from, " and ", to);
+          loop(from, to+1, upb);
+        )
+        else
+        (
+          loop(from, to+1, upb)
+        )
+      )
+    )
+  )
+  in
+    loop(1, 2, 2000)
+  end
+)
+
+
+
+
+
+//// old version
+
 
 val divslists list0(list0(int)) = list0_nil(list0_nil())
 val divssum: arrszref(int) = arrszref_make_elt(i2sz(20001), 0)
 
 //
-(* ****** ****** *)
-
-extern
-fun
-list_get_at{a: type}(lst: list0 a, pos: int): a
-
-(* ****** ****** *)
-
-implement 
-list_get_at(lst, pos) = 
-(
-  let loop (l: lst, i: int): a =
-  (
-    case lst of 
-    | list0_nil(a)() => list0_nil(a)()
-    | list0_cons(a)(x, xs) => 
-      if i < pos then loop(xs, i+1)
-      else if i = pos then x
-  )
-  in
-    loop(l, 0)
-  end
-)
 
 (* ****** ****** *)
 
