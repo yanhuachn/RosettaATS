@@ -4,18 +4,10 @@
 #include "share/HATS/atspre_staload_libats_ML.hats"
 //
 
-
 staload
-M =
+Math =
 "libats/libc/SATS/math.sats"
 
-
-(* ****** ****** *)
-(*
-extern
-fun
-is_prime(p: int): bool
-*)
 (* ****** ****** *)
 
 extern
@@ -31,16 +23,17 @@ test(p: int, upperbound: int): void
 (* ****** ****** *)
 
 fun
-power(x: int, n: int): int =
+mypower(x: int, n: int): int =
 (
-  if n > 0 then x * power(x, n-1) else 1
+  if n > 0 then x * mypower(x, n-1) else 1
 )
+
 
 (* ****** ****** *)
 
 fun
 isqrt(n: intGte(0)): intGte(0) =
-  $UNSAFE.cast($M.sqrt_double(g0i2f(n)))
+  $UNSAFE.cast($Math.sqrt_double(g0i2f(n)))
 //
 fun
 is_prime
@@ -57,26 +50,6 @@ else (
     else (1, (isqrt(n)+1)/2).forall()(lam i => n % (2*i+1) != 0)
 ) (* else *)
 ) (* end of [is_prime] *)
-
-(* ****** ****** *)
-(*
-implement
-is_prime(p) = 
-(
-  if (p = 2) then true
-  else
-  (
-    if (p <=1 || p % 2 = 0) then false
-    else let
-      val x = $M.sqrt(p)
-      fun loop(i: int): bool =
-        if i <= x then (if p % i = 0 then false else loop(i+2)) else true
-    in
-      loop(3)
-    end
-  )
-)
-*)
 
 (* ****** ****** *)
 
@@ -96,15 +69,21 @@ test(p, upperbound) (* void *) =
   else 
   (
   let
-    val mer = power(2, p) - 1  // 2^p - 1
-    val res = 
-      if 
-        is_prime(mer) && mer % fun_s(p-1) = 0 
-        //mer > 3 && mer % 45 = 0
-      then true 
-      else false
+    val mer = mypower(2, p) - 1  // 2^p - 1
+    val mer1 = g1ofg0(mer)
+    val () = assertloc(mer1 >= 2)
+    val v1 = is_prime(mer1)
+    val v2 = (if mer % fun_s(p-1) = 0 then true else false): bool
+    val res = (if v1 && v2 then true else false): bool
+    
   in
   (
+    (* for test
+    println!(p,": ", "prime-", v1);
+    println!(" formula-", v2);
+    println!(" res-", res);
+    *)
+    
     if res then println!("Mersenne Prime: ", p) else ();
     test(p+1, upperbound);
   )
@@ -116,6 +95,35 @@ test(p, upperbound) (* void *) =
 
 implement main0 () =
 (
-  test(3, 1000) // set upper bound as 1000
+  test(3, 100) // set upper bound as 100
 )
 
+
+
+
+
+
+////  BACK UP 
+
+(*
+extern
+fun
+is_prime(p: int): bool
+
+implement
+is_prime(p) =
+(
+  if (p = 2) then true
+  else
+  (
+    if (p <=1 || p % 2 = 0) then false
+    else let
+      val x = $M.sqrt(p)
+      fun loop(i: int): bool =
+        if i <= x then (if p % i = 0 then false else loop(i+2)) else true
+    in
+      loop(3)
+    end
+  )
+)
+*)
