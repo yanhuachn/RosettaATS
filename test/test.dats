@@ -4,6 +4,50 @@
 #include "share/HATS/atspre_staload_libats_ML.hats"
 //
 
+
+
+implement main0 () = 
+(
+  let
+    val matrix = mtrxszref_make_elt<int>(i2sz(8), i2sz(8), 0)
+    val () = matrix[1, 2]:= 1;
+    val () = matrix[4, 6]:= 2;
+    val tup = @(4, 6)
+  in
+  (
+    println!(matrix[0,1]);
+    println!(matrix[1,2]);
+    println!(matrix[tup.0,tup.1]);
+    println!(matrix[3,4]);
+    print_matrix0(matrix);
+  )
+  end
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////
+
 fun
 myfun(a: int): void =
 (
@@ -37,20 +81,6 @@ implement main0 () =
 (
   myfun(2)
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //// test if else

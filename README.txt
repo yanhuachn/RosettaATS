@@ -22,9 +22,9 @@ Greatest common divisor                 (V)
 
 Pangram checker                         (V)
 Harshad or Niven series                 (V)
-24 game                                 ( )
-Knight's tour                           ( )
-N-queens problem                        ( )
+Least common multiple                   (V)
+Knight's tour                           (V)
+N-queens problem                        (V)
 
 (V) Completed and Functional
 (*) Completed with errors
